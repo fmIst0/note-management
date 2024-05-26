@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changes/01-create-notes-table.yaml
+  - include:
+      file: db/changelog/changes/02-insert-data-to-notes-table.yaml
