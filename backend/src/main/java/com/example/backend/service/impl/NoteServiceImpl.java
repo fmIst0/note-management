@@ -1,5 +1,6 @@
 package com.example.backend.service.impl;
 
+import com.example.backend.dto.CreateNoteDto;
 import com.example.backend.dto.NoteDto;
 import com.example.backend.mapper.NoteMapper;
 import com.example.backend.model.Note;
@@ -19,36 +20,36 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public List<NoteDto> findAll() {
-        List<NoteDto> noteDtos = noteRepository.findAll()
+        List<NoteDto> notesDtos = noteRepository.findAll()
                 .stream()
-                .map(noteMapper::toDto)
+                .map(noteMapper::toReturnDto)
                 .toList();
-        if (noteDtos.isEmpty()) {
+        if (notesDtos.isEmpty()) {
             throw new EntityNotFoundException("There are no notes here yet ;(");
         }
-        return noteDtos;
+        return notesDtos;
     }
 
     @Override
     public NoteDto findById(Long id) {
         return noteRepository.findById(id)
-                .map(noteMapper::toDto)
+                .map(noteMapper::toReturnDto)
                 .orElseThrow(() -> new EntityNotFoundException("No note with id: " + id));
     }
 
     @Override
-    public NoteDto createNote(NoteDto noteDto) {
+    public CreateNoteDto createNote(CreateNoteDto noteDto) {
         Note newNote = noteMapper.toModel(noteDto);
-        return noteMapper.toDto(noteRepository.save(newNote));
+        return noteMapper.toCreateDto(noteRepository.save(newNote));
     }
 
     @Override
-    public NoteDto updateNote(Long id, NoteDto noteDto) {
+    public CreateNoteDto updateNote(Long id, CreateNoteDto noteDto) {
         Note noteToUpdate = noteRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("No note with id: " + id));
         noteToUpdate.setTitle(noteDto.getTitle());
         noteToUpdate.setContent(noteDto.getContent());
-        return noteMapper.toDto(noteRepository.save(noteToUpdate));
+        return noteMapper.toCreateDto(noteRepository.save(noteToUpdate));
     }
 
     @Override

@@ -1,0 +1,51 @@
+@import './components/NoteList.scss';
+@import './components/NoteForm.scss';
+@import './components/NoteDetail.scss';
+@import './components/Header.scss';
+
+.note-list {
+  list-style: none;
+  padding: 0;
+
+  .note-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+
+    .btn {
+      margin-left: 5px;
+    }
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+
+  label {
+    margin: 10px 0 5px;
+  }
+
+  input, textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    align-self: flex-end;
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+  button {
+    margin-left: 5px;
+  }
+}
