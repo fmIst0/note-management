@@ -9,13 +9,30 @@
   align-items: center;
   padding: 0.5rem 1rem;
   border-bottom: 1px solid #ccc;
-}
 
-.note-item span {
-  flex-grow: 1;
-}
+  span {
+    flex-grow: 1;
+  }
 
-.note-item a,
-.note-item button {
-  margin-left: 0.5rem;
+  .btn {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #ffffff;
+    display: inline-block;
+    text-align: center;
+
+    &.btn-success {
+      background-color: #037703;
+    }
+
+    &.btn-info {
+      background-color: #0a0ab2;
+    }
+
+    &.btn-danger {
+      background-color: #be0c0c;
+    }
+  }
 }
