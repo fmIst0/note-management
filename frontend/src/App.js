@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import NoteList from './components/NoteList';
+import NoteForm from './components/NoteForm';
+import NoteDetail from './components/NoteDetail';
+import Header from './components/Header';
+import './App.scss';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Provider store={store}>
+            <Router>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<NoteList />} />
+                    <Route path="/create" element={<NoteForm />} />
+                    <Route path="/update/:id" element={<NoteForm isEdit />} />
+                    <Route path="/notes/:id" element={<NoteDetail />} />
+                </Routes>
+            </Router>
+        </Provider>
+    );
 }
 
 export default App;

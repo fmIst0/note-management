@@ -1,0 +1,21 @@
+.note-list {
+  list-style: none;
+  padding: 0;
+}
+
+.note-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.note-item span {
+  flex-grow: 1;
+}
+
+.note-item a,
+.note-item button {
+  margin-left: 0.5rem;
+}
