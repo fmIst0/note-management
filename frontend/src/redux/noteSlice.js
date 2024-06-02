@@ -63,6 +63,7 @@ export const editNote = (note) => async (dispatch) => {
     try {
         const response = await axios.put(`${API_URL}/${note.id}`, note);
         dispatch(updateNote(response.data));
+        dispatch(fetchNotes());
     } catch (error) {
         console.error('Failed to edit note:', error);
     }

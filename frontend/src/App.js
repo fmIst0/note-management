@@ -15,8 +15,8 @@ function App() {
                 <Header />
                 <Routes>
                     <Route path="/" element={<NoteList />} />
-                    <Route path="/create" element={<NoteForm />} />
-                    <Route path="/update/:id" element={<NoteForm isEdit />} />
+                    <Route path="/create" element={<NoteForm isEdit={false} />} />
+                    <Route path="/update/:id" element={<NoteForm isEdit={true} />} />
                     <Route path="/notes/:id" element={<NoteDetail />} />
                 </Routes>
             </Router>

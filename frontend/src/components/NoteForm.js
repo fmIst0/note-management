@@ -1,26 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
-import {createNote, updateNote} from '../redux/noteSlice';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { createNote, editNote, fetchNoteById } from '../redux/noteSlice';
+import { useNavigate, useParams } from 'react-router-dom';
 import './NoteForm.scss';
 
-const NoteForm = ({ isEdit, existingNote }) => {
-    const { t, i18n } = useTranslation();
-
-    const changeLanguage = lng => {
-        i18n.changeLanguage(lng);
-    };
+const NoteForm = ({ isEdit }) => {
+    const { t } = useTranslation();
+    const { id } = useParams();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const existingNote = useSelector(state => state.notes.find(note => note.id === id));
 
     const [title, setTitle] = useState(existingNote ? existingNote.title : '');
     const [content, setContent] = useState(existingNote ? existingNote.content : '');
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isEdit && !existingNote) {
+            dispatch(fetchNoteById(id));
+        }
+    }, [dispatch, id, isEdit, existingNote]);
+
+    useEffect(() => {
+        if (existingNote) {
+            setTitle(existingNote.title);
+            setContent(existingNote.content);
+        }
+    }, [existingNote]);
 
     const handleSubmit = e => {
         e.preventDefault();
         if (isEdit) {
-            dispatch(updateNote({ id: existingNote.id, title, content }));
+            dispatch(editNote({ id, title, content }));
         } else {
             dispatch(createNote({ title, content }));
         }
