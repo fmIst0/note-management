@@ -9,9 +9,14 @@ describe('Notes App', () => {
         cy.get('header h1').contains('Notes');
     });
 
-    it('should change language to English', () => {
-        cy.get('header .language-buttons button').contains('EN').click();
-        cy.get('header h1').contains('Notes');
+    it('should change language to Ukrainian', () => {
+        cy.get('header .language-buttons button').contains('UA').click();
+        cy.get('header h1').contains('Нотатки');
+    });
+
+    it('should change language to French', () => {
+        cy.get('header .language-buttons button').contains('FR').click();
+        cy.get('header h1').contains('Remarques');
     });
 
     it('should create a new note', () => {
