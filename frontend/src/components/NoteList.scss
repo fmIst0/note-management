@@ -12,6 +12,11 @@
 
   span {
     flex-grow: 1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    margin-right: 0.5rem;
+    max-width: calc(100% - 330px);
   }
 
   .btn {
