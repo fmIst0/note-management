@@ -18,9 +18,7 @@
 
 ### Run API
 1. Write `cd backend` command from the `/note-management` dir in terminal to get to the backend directory and build project with `mvn clean install`.
-2. Run project with `mvn spring-boot:run` command in terminal.
-
-To stop the execution press `Ctrl+C` in terminal 
+2. Run this file: [NoteManagementApplication](backend/src/main/java/com/example/backend/NoteManagementApplication.java).
 
 ### Run client app
 1. Ensure you have node.js and npm installed on your system.
