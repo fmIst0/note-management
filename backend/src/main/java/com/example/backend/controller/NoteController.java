@@ -2,7 +2,6 @@ package com.example.backend.controller;
 
 import com.example.backend.dto.CreateNoteDto;
 import com.example.backend.dto.NoteDto;
-import com.example.backend.model.Note;
 import com.example.backend.service.NoteService;
 import jakarta.validation.Valid;
 import java.util.List;
@@ -45,7 +44,7 @@ public class NoteController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public CreateNoteDto updateNote(@PathVariable Long id,
-                              @Valid @RequestBody CreateNoteDto noteDto) {
+                                    @Valid @RequestBody CreateNoteDto noteDto) {
         return noteService.updateNote(id, noteDto);
     }
 

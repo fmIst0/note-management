@@ -1,6 +1,8 @@
    Clone the repository: `git@github.com:fmIst0/note-management-api.git`.
 
-   Don't forget to press the "Load" button
+   Ensure you have Java Development Kit and Maven installed on your system.
+
+   Don't forget to press the "Load" button.
    
 ![load button](load_button.jpg)   
 

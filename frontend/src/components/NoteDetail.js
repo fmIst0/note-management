@@ -5,7 +5,7 @@ import {fetchNoteById} from '../redux/noteSlice';
 import './NoteDetail.scss';
 
 const NoteDetail = () => {
-    const { id } = useParams();
+    const {id} = useParams();
     const dispatch = useDispatch();
 
     useEffect(() => {
