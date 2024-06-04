@@ -38,18 +38,18 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public CreateNoteDto createNote(CreateNoteDto noteDto) {
+    public NoteDto createNote(CreateNoteDto noteDto) {
         Note newNote = noteMapper.toModel(noteDto);
-        return noteMapper.toCreateDto(noteRepository.save(newNote));
+        return noteMapper.toReturnDto(noteRepository.save(newNote));
     }
 
     @Override
-    public CreateNoteDto updateNote(Long id, CreateNoteDto noteDto) {
+    public NoteDto updateNote(Long id, CreateNoteDto noteDto) {
         Note noteToUpdate = noteRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("No note with id: " + id));
         noteToUpdate.setTitle(noteDto.getTitle());
         noteToUpdate.setContent(noteDto.getContent());
-        return noteMapper.toCreateDto(noteRepository.save(noteToUpdate));
+        return noteMapper.toReturnDto(noteRepository.save(noteToUpdate));
     }
 
     @Override
