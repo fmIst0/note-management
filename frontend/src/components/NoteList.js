@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
-import { fetchNotes, removeNote } from "../redux/noteSlice";
-import { Link } from "react-router-dom";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useTranslation} from "react-i18next";
+import {fetchNotes, removeNote} from "../redux/noteSlice";
+import {Link} from "react-router-dom";
 import './NoteList.scss';
 
 const NoteList = () => {
     const dispatch = useDispatch();
     const notes = useSelector(state => state.notes);
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     useEffect(() => {
         dispatch(fetchNotes());

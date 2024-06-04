@@ -50,6 +50,13 @@ describe('Notes App', () => {
         cy.get('.note-list .note-item').should('contain', 'Updated Test Note');
     });
 
+    it('should view the updated note', () => {
+        cy.get('.note-list .note-item').contains('Updated Test Note').parent().find('.btn-success').click();
+        cy.url().should('include', '/notes');
+        cy.get('.note-detail h2').contains('Updated Test Note');
+        cy.get('.note-detail .note-content').contains('This is an updated test note.');
+    });
+
     it('should delete the note', () => {
         cy.get('.note-list .note-item').contains('Updated Test Note').parent().find('.btn-danger').click();
         cy.get('.note-list .note-item').should('not.contain', 'Updated Test Note');

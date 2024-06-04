@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const noteSlice = createSlice({
@@ -17,18 +17,18 @@ const noteSlice = createSlice({
         },
         deleteNote: (state, action) => state.filter(note => note.id !== action.payload),
         setNote: (state, action) => {
-            const { id, ...newNote } = action.payload;
+            const {id, ...newNote} = action.payload;
             const existingNoteIndex = state.findIndex(note => note.id === id);
             if (existingNoteIndex !== -1) {
-                state[existingNoteIndex] = { id, ...newNote };
+                state[existingNoteIndex] = {id, ...newNote};
             } else {
-                state.push({ id, ...newNote });
+                state.push({id, ...newNote});
             }
         }
     }
 });
 
-export const { setNotes, addNote, updateNote, deleteNote, setNote } = noteSlice.actions;
+export const {setNotes, addNote, updateNote, deleteNote, setNote} = noteSlice.actions;
 
 const API_URL = 'http://localhost:8080/api/notes';
 

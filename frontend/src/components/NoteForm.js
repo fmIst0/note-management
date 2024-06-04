@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import { createNote, editNote, fetchNoteById } from '../redux/noteSlice';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import {useDispatch, useSelector} from 'react-redux';
+import {createNote, editNote, fetchNoteById} from '../redux/noteSlice';
+import {useNavigate, useParams} from 'react-router-dom';
 import './NoteForm.scss';
 
-const NoteForm = ({ isEdit }) => {
-    const { t } = useTranslation();
-    const { id } = useParams();
+const NoteForm = ({isEdit}) => {
+    const {t} = useTranslation();
+    const {id} = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const existingNote = useSelector(state => state.notes.find(note => note.id === id));
@@ -31,9 +31,9 @@ const NoteForm = ({ isEdit }) => {
     const handleSubmit = e => {
         e.preventDefault();
         if (isEdit) {
-            dispatch(editNote({ id, title, content }));
+            dispatch(editNote({id, title, content}));
         } else {
-            dispatch(createNote({ title, content }));
+            dispatch(createNote({title, content}));
         }
         navigate('/');
     };
