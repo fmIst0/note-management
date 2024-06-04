@@ -37,13 +37,13 @@ public class NoteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateNoteDto createNote(@Valid @RequestBody CreateNoteDto noteDto) {
+    public NoteDto createNote(@Valid @RequestBody CreateNoteDto noteDto) {
         return noteService.createNote(noteDto);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public CreateNoteDto updateNote(@PathVariable Long id,
+    public NoteDto updateNote(@PathVariable Long id,
                                     @Valid @RequestBody CreateNoteDto noteDto) {
         return noteService.updateNote(id, noteDto);
     }
